@@ -1,12 +1,14 @@
 class Solution(object):
     def maxProfit(self, prices):
-        min_price = float('inf')
-        max_profit = 0
+        leastPrice = prices[0]  
+        maxProfit = 0            
+
+        for price in prices:     
+            if price < leastPrice:
+                leastPrice = price   
+            profit = price - leastPrice   
+            if profit > maxProfit:
+                maxProfit = profit   
+
+        return maxProfit
         
-        for price in prices:
-            min_price = min(min_price, price)
-            profit = price - min_price
-            max_profit = max(max_profit, profit)
-        
-        return max_profit
-  
